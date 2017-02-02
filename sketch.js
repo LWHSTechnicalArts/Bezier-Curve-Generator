@@ -7,15 +7,15 @@ var dragables = []; //array to hold all the dragable buttons
 
 //varibles for buttons
 var justpushed = false;
-var buttonx = 50;
+var buttonx = 90;
 var buttony = 100;
-var buttonx2 = 200;
+var buttonx2 = 220;
 var buttony2= 100;
-var buttonx3 = 50;
+var buttonx3 = 90;
 var buttony3= 210;
-var buttonx4 = 200;
+var buttonx4 = 220;
 var buttony4= 210;
-var buttonx5 = 50;
+var buttonx5 = 150;
 var buttony5= 310;
 
 //varibles for shape
@@ -26,7 +26,7 @@ var killer;
 
 function setup() {
  //play with these too!
- fillcolor = color(0);
+ fillcolor = color(255, 182, 130);
  createCanvas(1500, 700);
 
  var killer = 0;
@@ -42,7 +42,7 @@ function setup() {
 
 function draw() {
   //nice looking background
-  background(50, 89, 100);
+  background(255, 255, 255);
   
   //dealing with dragable graphics and position
   for (var i = 0; i < dragables.length; i++) {
@@ -100,10 +100,10 @@ function draw() {
     //dragable graphics
     //choosing color of dragable
     if( ((i+1) % 3 == 0) || (i == 0) ){
-      fill(0,255,0);
+      fill(188, 216, 255);
     }  
     else{
-      fill(255,0,0);
+      fill(219, 188, 255);
     }
 
     //displaying the dragables
@@ -116,13 +116,13 @@ function draw() {
   tint(255);
 
   //UI stuff (buttons, generated code)
-  fill(200,200,255);
-  rect(0,0,300,height);
+  fill(255,255,255);
+  rect(10,10,300,height);
 
   //generated code
   fill(0);
-  text("NOTE: to acess the 'printed' code please open your", 10,370);
-  text(" browser's console", 10, 380);
+  text("NOTE: to acess the 'printed' code please open your", 20,390);
+  text(" browser's console, or triple click the text", 20, 400);
   removeElements();
   var htmltext = ['beginShape(); <br>' + "vertex(" + round(dragables[0].x-300) + "," + round(dragables[0].y) + "); <br>"];
   
@@ -154,10 +154,32 @@ function draw() {
   else{
     htmltext.push("endShape();");
   }
-  var printhtmltext = createDiv(join(htmltext, ""));
-  printhtmltext.position(10,400);
+  
+    //original code to push text
+    //var printhtmltext = createDiv(join(htmltext, ""));
+ // printhtmltext.position(10,400);
 
+    
+    //Eva's added code that prints the code (htmltext) as text into a div
+   // var printdiv = document.createElement("div");
+   // rintdiv.innerHTML = htmltext;
+    
+    //var node = document.createTextNode(htmltext);
+    //printdiv.appendChild(node);
+    
+   // var displayedText = document.getElementById("div1");
+  //  displayedText.appendChild(printdiv); //replace instead of append
 
+//attempt 2
+    var printText = createP(htmltext);
+    printText.position(20,410);
+    printText.innerHTML = htmltext;
+   // document.getElementById("p1").innerHTML = htmltext;
+    
+    
+    
+    
+    
 
 
   //buttons Note: I know this code is messy. I didn't want to make a button object for the 3-4 buttons im going to include in this program
@@ -195,7 +217,8 @@ function draw() {
   if(!mouseIsPressed){
     justpushed = false;
   }
-  ellipse(buttonx, buttony, 100, 100);
+  fill(130, 188, 255);
+    ellipse(buttonx, buttony, 100, 100);
   fill(0,0,0);
   text("Add Curve",buttonx-25,buttony);
 
@@ -233,9 +256,10 @@ function draw() {
   if(!mouseIsPressed){
     justpushed = false;
   }
-  ellipse(buttonx2, buttony2, 100, 100);
+  fill(255, 71, 71);
+    ellipse(buttonx2, buttony2, 100, 100);
   fill(0,0,0);
-  text("full circle",buttonx2-25,buttony2);
+  text("Full Circle",buttonx2-25,buttony2);
 
 
 
@@ -270,9 +294,10 @@ function draw() {
   if(!mouseIsPressed){
     justpushed = false;
   }
-  ellipse(buttonx3, buttony3, 100, 100);
+  fill(227, 158, 255);
+    ellipse(buttonx3, buttony3, 100, 100);
   fill(0,0,0);
-  text("Fill",buttonx3-25,buttony3);
+  text("Fill",buttonx3-9,buttony3);
 
 
   // get distance between mouse and circle
@@ -319,7 +344,8 @@ function draw() {
   if(!mouseIsPressed){
     justpushed = false;
   }
-  ellipse(buttonx4, buttony4, 100, 100);
+  fill(131, 255, 109);
+    ellipse(buttonx4, buttony4, 100, 100);
   fill(0,0,0);
   text("Print Code",buttonx4-25,buttony4);
 
@@ -353,9 +379,10 @@ function draw() {
   if(!mouseIsPressed){
     justpushed = false;
   }
-  ellipse(buttonx5, buttony5, 100, 100);
+ fill(255, 255, 127);
+    ellipse(buttonx5, buttony5, 100, 100);
   fill(0,0,0);
-  text("Delete Point",buttonx5-25,buttony5);
+  text("Delete Point",buttonx5-30,buttony5);
 
 }
 
