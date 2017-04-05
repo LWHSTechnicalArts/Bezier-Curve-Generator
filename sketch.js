@@ -129,15 +129,15 @@ function draw() {
   for(var i = 1; i < dragables.length-1;i++){
     htmltext.push("bezierVertex(" );
     htmltext.push(round(dragables[i].x-300)); 
-    htmltext.push(",");
+ //   htmltext.push(",");
     htmltext.push(round(dragables[i].y)); 
-    htmltext.push(",");
+//    htmltext.push(",");
     htmltext.push(round(dragables[i+2].x-300)); 
-    htmltext.push(","); 
+ //   htmltext.push(","); 
     htmltext.push(round(dragables[i+2].y)); 
-    htmltext.push(",");
+ //   htmltext.push(",");
     htmltext.push(round(dragables[i+1].x-300)) 
-    htmltext.push(","); 
+  //  htmltext.push(","); 
     htmltext.push(round(dragables[i+1].y)); 
     htmltext.push("); <br>");
     i++;
@@ -146,7 +146,7 @@ function draw() {
   if(fullcircle){
     htmltext.push("vertex(");
     htmltext.push(round(dragables[0].x-300)); 
-    htmltext.push(","); 
+//    htmltext.push(","); 
     htmltext.push(round(dragables[0].y)); 
     htmltext.push("); <br>");
     htmltext.push("endShape();");
