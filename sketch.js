@@ -127,29 +127,36 @@ function draw() {
   var htmltext = ['beginShape(); <br>' + "vertex(" + round(dragables[0].x-300) + "," + round(dragables[0].y) + "); <br>"];
   
   for(var i = 1; i < dragables.length-1;i++){
-    htmltext.push("bezierVertex(" );
-    htmltext.push(round(dragables[i].x-300)); 
- //   htmltext.push(",");
-    htmltext.push(round(dragables[i].y)); 
-//    htmltext.push(",");
-    htmltext.push(round(dragables[i+2].x-300)); 
- //   htmltext.push(","); 
-    htmltext.push(round(dragables[i+2].y)); 
- //   htmltext.push(",");
-    htmltext.push(round(dragables[i+1].x-300)) 
-  //  htmltext.push(","); 
-    htmltext.push(round(dragables[i+1].y)); 
-    htmltext.push("); <br>");
+ //Eva's code: this makes it so that it doesn't add each piece to the array, but as one line for the coordinates, eliminating extra commas 
+      htmltext.push("bezierVertex(" + round(dragables[i].x-300) + "," + round(dragables[i].y)  + "," + round(dragables[i+2].x-300)  + "," + round(dragables[i+2].y)  + "," + round(dragables[i+1].x-300) + "," + round(dragables[i+1].y) + "); <br>");
+ 
+//original code
+//      htmltext.push("bezierVertex(");
+//    htmltext.push(round(dragables[i].x-300)); 
+// //   htmltext.push(",");
+//    htmltext.push(round(dragables[i].y)); 
+////    htmltext.push(",");
+//    htmltext.push(round(dragables[i+2].x-300)); 
+// //   htmltext.push(","); 
+//    htmltext.push(round(dragables[i+2].y)); 
+// //   htmltext.push(",");
+//    htmltext.push(round(dragables[i+1].x-300)) 
+//  //  htmltext.push(","); 
+//    htmltext.push(round(dragables[i+1].y)); 
+//    htmltext.push("); <br>");
     i++;
     i++;
   }
+    
+    
   if(fullcircle){
-    htmltext.push("vertex(");
-    htmltext.push(round(dragables[0].x-300)); 
-//    htmltext.push(","); 
-    htmltext.push(round(dragables[0].y)); 
-    htmltext.push("); <br>");
-    htmltext.push("endShape();");
+    htmltext.push("vertex(" + round(dragables[0].x-300) + "," + round(dragables[0].y) + ");");
+//    htmltext.push("vertex(");
+//    htmltext.push(round(dragables[0].x-300)); 
+////    htmltext.push(","); 
+//    htmltext.push(round(dragables[0].y)); 
+//    htmltext.push("); <br>");
+//    htmltext.push("endShape();");
   }
   else{
     htmltext.push("endShape();");
@@ -322,14 +329,14 @@ function draw() {
     if(mouseIsPressed && !justpushed){
       justpushed = true;
       println("beginShape();");
-      println("vertex(" + round(dragables[0].x-300) + "," + round(dragables[0].y) + ");");
+      println("vertex(" + round(dragables[0].x-300) + round(dragables[0].y) + ");");
       for(var i = 1; i < dragables.length-1;i++){
-        println("bezierVertex(" + round(dragables[i].x-300) + "," + round(dragables[i].y) + "," + round(dragables[i+2].x-300) + "," + round(dragables[i+2].y) + "," + round(dragables[i+1].x-300) + "," + round(dragables[i+1].y) + ");");
+        println("bezierVertex(" + round(dragables[i].x-300)  + round(dragables[i].y)  + round(dragables[i+2].x-300) + round(dragables[i+2].y) + round(dragables[i+1].x-300)  + round(dragables[i+1].y) + ");");
         i++;
         i++;
       }
       if(fullcircle){
-        println("vertex(" + round(dragables[0].x-300) + "," + round(dragables[0].y) + ");");
+        println("vertex(" + round(dragables[0].x-300)  + round(dragables[0].y) + ");");
         println("endShape();");
       }
       else{
